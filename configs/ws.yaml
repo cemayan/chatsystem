@@ -1,0 +1,6 @@
+environment: dev
+server:
+  ws:
+    addr: localhost:1616
+logger:
+  level: debug
