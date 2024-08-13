@@ -1,4 +1,4 @@
-use crate::api::health;
+use crate::api::{health, ws};
 use axum::Router;
 use tower_http::trace;
 
@@ -8,6 +8,11 @@ pub async fn create_app() -> Router {
             "/api/v1/health",
             Router::new()
                 .merge(health::create_route()),
+        ))
+        .merge(Router::new().nest(
+            "/ws",
+            Router::new()
+                .merge(ws::create_route()),
         ))
         .layer(
             trace::TraceLayer::new_for_http()

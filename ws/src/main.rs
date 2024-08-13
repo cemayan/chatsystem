@@ -13,6 +13,7 @@ async fn main() {
     let router = api::router::create_app().await;
     let config = CONFIGS.to_owned();
 
+
     // run it with hyper
     let listener = tokio::net::TcpListener::bind(config.server.ws.unwrap().addr)
         .await
